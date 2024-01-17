@@ -1,0 +1,32 @@
+const path = require('path')
+//essa linha a cima importa uma função utilizada pelo node.js, ela vai fazer com que a separação do diretorio seja mudada de acordo com sistema operacional.
+
+module.exports = {
+    mode: 'production', // ou 'production' dependendo do ambiente
+    entry: path.resolve(__dirname, "src", "index.jsx"),
+    //então ao invez de utilizar src/index.jsx, utilizamos o codigo acima, o __dirname puxa o caminho do documento atual.
+    //nesse caso temos que o entry: e o diretorio do documento de origen e o output é o de destino do documento modificado.
+    output: {
+        path: path.resolve(__dirname, 'dist'),
+        //path vem o caminho
+        filename: "bundle.js"
+        //filename o nome do arquivo a ser criado
+            
+    },
+    resolve: {
+        extensions: [".js", ".jsx"]
+        //com essa configuração dizemos que o webpack vai ler arquivos js e jsx
+    },
+    module: {
+        rules: [
+            {
+                test: /\.jsx$/,
+                exclude: /node-modules/,
+                use: 'babel-loader',
+                //o que temos aqui é que o webpack vai acessar um arquivos jsx e apagar todos os arquivos que vem no node-modules, e usar o babel para converter esse jsx.
+                // de um npm install --save-dev babel-loader
+            }
+        ]
+    }
+    
+}
