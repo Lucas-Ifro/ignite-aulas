@@ -1,5 +1,10 @@
 import React from 'react';
-import { app } from './app';
+import { render } from 'react-dom'
+// estou importando a função render de dentro do react-dom
+import { App } from './app.jsx';
+
+render(<App/>, document.getElementById("root"))
+//o render recebe dois parametros um é o que vai ser rederizado e o outro é a onde vai ser rederizado.
 
 
 //npm install --save-dev @babel/cli @babel/core @babel/plugin-transform-react-jsx
