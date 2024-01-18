@@ -2,7 +2,7 @@ const path = require('path')
 //essa linha a cima importa uma função utilizada pelo node.js, ela vai fazer com que a separação do diretorio seja mudada de acordo com sistema operacional.
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
-const isDevelopment = process.env.NODE_INV !== "production";
+const isDevelopment = process.env.NODE_ENV !== "production";
 
 module.exports = {
     mode: isDevelopment ? 'development' : 'production', // ou 'production' dependendo do ambiente
@@ -17,6 +17,12 @@ module.exports = {
         //filename o nome do arquivo a ser criado
             
     },
+    resolve: {
+        alias: {
+            'core-js/modules/es.symbol.description': 'core-js/modules/es.symbol.description'
+        }
+    },
+    
     resolve: {
         extensions: [".js", ".jsx"]
         //com essa configuração dizemos que o webpack vai ler arquivos js e jsx
@@ -36,9 +42,14 @@ module.exports = {
             {
                 test: /\.jsx$/,
                 exclude: /node-modules/,
-                use: 'babel-loader',
-                //o que temos aqui é que o webpack vai acessar um arquivos jsx e apagar todos os arquivos que vem no node-modules, e usar o babel para converter esse jsx.
-                // de um npm install --save-dev babel-loader
+                use: {
+                    loader: 'babel-loader',
+                    //o que temos aqui é que o webpack vai acessar um arquivos jsx e apagar todos os arquivos que vem no node-modules, e usar o babel para converter esse jsx.
+                    // de um npm install --save-dev babel-loader
+                    options: {
+                        sourceMaps: true
+                    }
+                }
             },
             {
                 test: /\.scss$/,
@@ -46,6 +57,7 @@ module.exports = {
                 use: ['style-loader','css-loader','sass-loader'],
                 //o que temos aqui é que o webpack vai acessar um arquivos css e apagar todos os arquivos que vem no node-modules, e usar o babel para converter esse css.
                 // de um npm install --save-dev style-loader css-loader
+                
             }
         ]
     }

@@ -38,6 +38,7 @@
     "commander": "^4.1.1",
     "concat-map": "^0.0.1",
     "convert-source-map": "^2.0.0",
+    "core-js": "^3.35.0",
     "core-js-compat": "^3.35.0",
     "debug": "^4.3.4",
     "electron-to-chromium": "^1.4.635",
