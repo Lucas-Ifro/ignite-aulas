@@ -1,5 +1,4 @@
 import React from "react";
-import { ReactDOM } from "react";
 
 export function RepositoryItem(props) {
     return (
@@ -7,7 +6,7 @@ export function RepositoryItem(props) {
             <strong>{props.repository.name ?? "Undfined"}</strong>
             <p>{props.repository.description}</p>
 
-        <a href={props.repository.link}>
+        <a href={props.repository.html_url} target="_blenk">
             Acessar repositório
         </a>
     </li>
