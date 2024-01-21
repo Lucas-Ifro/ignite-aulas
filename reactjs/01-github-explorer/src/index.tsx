@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom'
 // estou importando a função render de dentro do react-dom
-import { App } from './app.jsx';
+import { App } from './app';
 
 render(<App/>, document.getElementById("root"))
 //o render recebe dois parametros um é o que vai ser rederizado e o outro é a onde vai ser rederizado.

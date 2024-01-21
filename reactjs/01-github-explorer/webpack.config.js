@@ -26,7 +26,7 @@ module.exports = {
     },
     
     resolve: {
-        extensions: [".js", ".jsx", "ts", "tsx"]
+        extensions: [".js", ".jsx", ".ts", ".tsx"]
         //com essa configuração dizemos que o webpack vai ler arquivos js e jsx
     },
     devServer: {
@@ -44,8 +44,8 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.(j|t)sx$/,
-                exclude: /node-modules/,
+                test: /\.(t|j)sx$/,
+                exclude: /node_modules/,
                 use: {
                     loader: 'babel-loader',
                     //o que temos aqui é que o webpack vai acessar um arquivos jsx e apagar todos os arquivos que vem no node-modules, e usar o babel para converter esse jsx.
@@ -59,7 +59,7 @@ module.exports = {
             },
             {
                 test: /\.scss$/,
-                exclude: /node-modules/,
+                exclude: /node_modules/,
                 use: ['style-loader','css-loader','sass-loader'],
                 //o que temos aqui é que o webpack vai acessar um arquivos css e apagar todos os arquivos que vem no node-modules, e usar o babel para converter esse css.
                 // de um npm install --save-dev style-loader css-loader
