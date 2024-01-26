@@ -27,7 +27,7 @@ margin-top: 4rem;
                 color: var(--text-title);
             }
 
-            &.deposito{
+            &.deposit{
                 color: var(--green);
             }
             &.retirada{

@@ -18,7 +18,7 @@ createServer({
           type:"deposit",
           valor: 10000.00,
           categoria: 'Venda',
-          createdAt: new Date('2021-02-19 09:40:00')
+          createdAt: new Date('2021-02-19 09:40:10')
         },
         {
           id: 2,
