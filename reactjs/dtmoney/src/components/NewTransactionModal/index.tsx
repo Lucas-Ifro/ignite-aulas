@@ -1,8 +1,11 @@
 import Modal from 'react-modal';
+
 import { Container, RadioBox, TransactionTypeContainer } from './styles';
+
 import fecharImg from "../../assets/fechar.svg";
 import entradaImg from "../../assets/entrada.svg";
 import saidaImg from "../../assets/saida.svg";
+
 import { useState, FormEvent } from 'react';
 import { api } from '../../services/api';
 
@@ -93,7 +96,7 @@ export function NewTransactionModal ({isopen, onRequestClose}: NewTransactionMod
                     </RadioBox>
                 </TransactionTypeContainer> 
 
-            <input type="submit" value="Cadastrar" />
+            <input type="submit" value="Cadastrar" onClick={onRequestClose}/>
         </Container>
     </Modal>
 
