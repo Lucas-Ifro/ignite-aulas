@@ -6,8 +6,8 @@ import fecharImg from "../../assets/fechar.svg";
 import entradaImg from "../../assets/entrada.svg";
 import saidaImg from "../../assets/saida.svg";
 
-import { useState, FormEvent } from 'react';
-import { api } from '../../services/api';
+import { useState, FormEvent, useContext } from 'react';
+import { TransactionsContext } from '../../TransactionsContext';
 
 interface NewTransactionModalProps{
     isopen: boolean;
@@ -15,23 +15,27 @@ interface NewTransactionModalProps{
 }
 
 export function NewTransactionModal ({isopen, onRequestClose}: NewTransactionModalProps){
+    const {createtransaction} = useContext(TransactionsContext)
+
     const [type, setType] = useState('deposit');
     const [titulo, setTitulo] = useState('');
     const [valor, setValor] = useState(0);
     const [categoria, setCategoria] = useState('');
 
-    function handleCreateNewTransaction(event: FormEvent) {
+    async function handleCreateNewTransaction(event: FormEvent) {
         event.preventDefault();
 
-        const data ={
-            titulo
-            ,valor
-            ,categoria
-            ,type
-        }
-        api.post('/transactions', data)
-
-        
+        await createtransaction({
+            titulo,
+            valor,
+            categoria,
+            type,
+        })
+        setTitulo('');
+        setCategoria('');
+        setType('deposit');
+        setValor(0);
+        onRequestClose()
     }
 
     return(
@@ -96,7 +100,7 @@ export function NewTransactionModal ({isopen, onRequestClose}: NewTransactionMod
                     </RadioBox>
                 </TransactionTypeContainer> 
 
-            <input type="submit" value="Cadastrar" onClick={onRequestClose}/>
+            <input type="submit" value="Cadastrar"/>
         </Container>
     </Modal>
 

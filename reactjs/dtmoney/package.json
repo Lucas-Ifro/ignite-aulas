@@ -8,6 +8,7 @@
     "miragejs": "^0.1.48",
     "polished": "^4.2.2",
     "react": "^18.2.0",
+    "react-devtools": "^5.0.0",
     "react-dom": "^18.2.0",
     "react-modal": "^3.16.1",
     "react-scripts": "5.0.1",
