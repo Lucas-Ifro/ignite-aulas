@@ -33,6 +33,7 @@ export function TransactionsTable(){
                                 
                                 </td>
                             <td>{transaction.categoria}</td>
+                            
                             <td>
                             {new Intl.DateTimeFormat('pt-BR').format(
                                 new Date(transaction.createdAt)

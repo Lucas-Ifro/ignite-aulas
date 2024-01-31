@@ -19,9 +19,9 @@ export function NewTransactionModal ({isopen, onRequestClose}: NewTransactionMod
 
     const [type, setType] = useState('deposit');
     const [titulo, setTitulo] = useState('');
-    const [valor, setValor] = useState(0);
+    const [valor, setValor] = useState(Number);
     const [categoria, setCategoria] = useState('');
-
+    
     async function handleCreateNewTransaction(event: FormEvent) {
         event.preventDefault();
 
@@ -34,7 +34,7 @@ export function NewTransactionModal ({isopen, onRequestClose}: NewTransactionMod
         setTitulo('');
         setCategoria('');
         setType('deposit');
-        setValor(0);
+        setValor(Number);
         onRequestClose()
     }
 
@@ -66,7 +66,7 @@ export function NewTransactionModal ({isopen, onRequestClose}: NewTransactionMod
             <input 
             type="number"  
             placeholder='Valor'
-            value = {valor}
+            value = {valor !== 0 ? valor : ''}
             onChange={event => setValor(Number(event.target.value))}
 
             />
@@ -93,7 +93,7 @@ export function NewTransactionModal ({isopen, onRequestClose}: NewTransactionMod
                     type='button'
                     onClick={()=>{ setType("withdraw") }}
                     isactive={type === "withdraw"}
-                    activecolor = "red"
+                    activecolor = 'red'
                     >
                         <img src={saidaImg} alt="" />
                         <span>Saída</span>

@@ -16,14 +16,14 @@ createServer({
           id: 1,
           titulo: "WebSite",
           type:"deposit",
-          valor: 10000.00,
+          valor: 1000.00,
           categoria: 'Venda',
           createdAt: new Date('2021-02-19 09:40:10')
         },
         {
           id: 2,
           titulo: "Aluguel",
-          type:"retirada",
+          type:"withdraw",
           valor: 1000.00,
           categoria: 'Pagamento',
           createdAt: new Date('2021-02-05 09:40:00')
