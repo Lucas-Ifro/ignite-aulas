@@ -6,8 +6,8 @@ import fecharImg from "../../assets/fechar.svg";
 import entradaImg from "../../assets/entrada.svg";
 import saidaImg from "../../assets/saida.svg";
 
-import { useState, FormEvent, useContext } from 'react';
-import { TransactionsContext } from '../../TransactionsContext';
+import { useState, FormEvent } from 'react';
+import { useTransactions } from '../../hooks/useTransactions';
 
 interface NewTransactionModalProps{
     isopen: boolean;
@@ -15,7 +15,7 @@ interface NewTransactionModalProps{
 }
 
 export function NewTransactionModal ({isopen, onRequestClose}: NewTransactionModalProps){
-    const {createtransaction} = useContext(TransactionsContext)
+    const {createtransaction} = useTransactions();
 
     const [type, setType] = useState('deposit');
     const [titulo, setTitulo] = useState('');
@@ -35,9 +35,9 @@ export function NewTransactionModal ({isopen, onRequestClose}: NewTransactionMod
         setCategoria('');
         setType('deposit');
         setValor(Number);
-        onRequestClose()
+        onRequestClose();
     }
-
+    
     return(
         
     <Modal 
@@ -66,7 +66,7 @@ export function NewTransactionModal ({isopen, onRequestClose}: NewTransactionMod
             <input 
             type="number"  
             placeholder='Valor'
-            value = {valor !== 0 ? valor : ''}
+            value = {valor}
             onChange={event => setValor(Number(event.target.value))}
 
             />
