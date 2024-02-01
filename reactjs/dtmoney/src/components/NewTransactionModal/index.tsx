@@ -19,7 +19,7 @@ export function NewTransactionModal ({isopen, onRequestClose}: NewTransactionMod
 
     const [type, setType] = useState('deposit');
     const [titulo, setTitulo] = useState('');
-    const [valor, setValor] = useState(Number);
+    const [valor, setValor] = useState(0);
     const [categoria, setCategoria] = useState('');
     
     async function handleCreateNewTransaction(event: FormEvent) {
@@ -34,7 +34,7 @@ export function NewTransactionModal ({isopen, onRequestClose}: NewTransactionMod
         setTitulo('');
         setCategoria('');
         setType('deposit');
-        setValor(Number);
+        setValor(0);
         onRequestClose();
     }
     

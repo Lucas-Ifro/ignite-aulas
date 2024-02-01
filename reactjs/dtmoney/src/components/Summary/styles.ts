@@ -26,6 +26,11 @@ export const Container = styled.div`
             font-weight: 500;
             line-height: 2rem;
 
+            &.saida{
+                color: var(--red);
+                opacity: 70%;
+            }
+            
         }
 
         &.background-total{

@@ -32,7 +32,7 @@ export function Summary(){
                     Entradas
                     <img src={entradaImg} alt="Entrada" />
                 </header>
-                <strong>
+                <strong >
                 {new Intl.NumberFormat('pt-BR', {
                     style: 'currency',
                     currency: 'BRL',   
@@ -45,7 +45,7 @@ export function Summary(){
                     Saídas
                     <img src={saidaImg} alt="Saídas" />
                 </header>
-                <strong>
+                <strong className="saida">-
                 {new Intl.NumberFormat('pt-BR', {
                     style: 'currency',
                     currency: 'BRL',   
