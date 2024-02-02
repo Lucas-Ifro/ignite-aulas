@@ -6,9 +6,6 @@ export default function Home() {
     <Head>
     <title>IG.news</title>
     </Head>
-    <h1>
-      Hello world
-    </h1>
     </>
   );
 }
