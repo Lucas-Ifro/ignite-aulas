@@ -11,6 +11,7 @@
   "dependencies": {
     "@stripe/ui-extension-sdk": "^8.8.1",
     "@types/next-auth": "^3.15.0",
+    "faunadb": "^4.8.0",
     "next": "14.1.0",
     "next-auth": "^4.24.5",
     "react": "^18",
