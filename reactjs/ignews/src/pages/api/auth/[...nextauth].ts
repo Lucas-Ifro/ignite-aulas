@@ -16,8 +16,9 @@ export const authOptions = {
   ],
   callbacks: {
     async signIn({ user }) {
-      console.log(user)
+      
       const { email } = user
+      console.log(email)
 
       await fauna.query(
         q.Create(
@@ -27,7 +28,7 @@ export const authOptions = {
       )
 
       return true
-    }
+    },
   }
 }
 export default NextAuth(authOptions)
