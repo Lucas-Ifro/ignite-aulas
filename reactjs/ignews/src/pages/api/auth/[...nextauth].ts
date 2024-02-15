@@ -5,6 +5,26 @@ import GithubProvider from "next-auth/providers/github"
 
 import { fauna } from "../../../services/fauna"
 
+async function createIndex() {
+
+  try {
+    await fauna.query(
+      q.CreateIndex({
+        name: 'user_email',
+        source: q.Collection('users'),
+        terms: [{ field: ['data', 'email'] }],
+      })
+    );
+
+    console.log('Índice "user_email" criado com sucesso!');
+
+  } catch (error) {
+    console.error('Erro ao criar o índice:', error);
+  }
+}
+
+// Chama a função para criar o índice
+createIndex();
 
 export const authOptions = {
   providers: [
