@@ -18,7 +18,7 @@ export const authOptions = {
     async signIn({ user }) {
       
       const { email } = user
-      console.log(email)
+      console.log(user)
 
       await fauna.query(
         q.Create(
