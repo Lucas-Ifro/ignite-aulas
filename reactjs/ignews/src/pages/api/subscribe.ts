@@ -8,6 +8,9 @@ type user = {
     ref:{
         id: string
     }
+    data: {
+        stripe_customer_id: string
+    }
 }
 
 
@@ -34,29 +37,37 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
                 q.Match(
                     q.Index('user_email'),
                         q.Casefold(userEmail)
+                ) 
+            )
+        )
+
+        let customerId = user.data.stripe_customer_id
+
+        if(!customerId){
+
+            const stripeCustomer = await stripe.customers.create({
+                email: userEmail,
+                
+            })
+    
+            
+            await fauna.query(
+                q.Update(
+                    q.Ref(q.Collection('users'), user.ref.id),
+                    {
+                        data: {
+                            stripe_customer_id: stripeCustomer.id
+                        }
+                    }
                 )
             )
-        )
 
-        const stripeCustomer = await stripe.customers.create({
-            email: userEmail,
-            
-        })
+            customerId = stripeCustomer.id
+        }
 
-        
-        await fauna.query(
-            q.Update(
-                q.Ref(q.Collection('users'), user.ref.id),
-                {
-                    data: {
-                        stripe_customer_id: stripeCustomer.id
-                    }
-                }
-            )
-        )
 
         const stripeCheckouSession = await stripe.checkout.sessions.create({
-            customer: stripeCustomer.id,
+            customer: customerId,
             payment_method_types: ["card"],
             billing_address_collection: 'required',
             line_items: [

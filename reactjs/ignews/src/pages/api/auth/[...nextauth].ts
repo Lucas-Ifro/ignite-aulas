@@ -38,8 +38,7 @@ export const authOptions = {
   callbacks: {
     async signIn({ user }) {
       const { email } = user
-      console.log(user)
-
+  
       await fauna.query(
         q.If(
           q.Not(
